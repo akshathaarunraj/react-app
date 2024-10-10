@@ -1,0 +1,16 @@
+/* is this Css module, a component specific css? YES.
+  * This will NOT be applied to all components in the app.
+  * it must be imported in the component where it is used.
+*/
+
+.purpleText {
+  color: purple;
+  font-weight: bold;
+  font-size: 20px;
+}
+.greenText {
+  color: green;
+  font-weight: normal;
+  font-size: 16px;
+  font-style: italic;
+}

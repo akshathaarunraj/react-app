@@ -1,0 +1,20 @@
+@use "./styles/variable" as *;
+@use "./styles/mixins" as *;
+
+.appText {
+  @include theme();
+  background-color: $primary-color;
+  height: 20vh;
+  color: white;
+  text-align: center;
+}
+
+.red-text {
+  color: red;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
+
+

@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import Header from "./layouts/Header";
+import Footer from "./layouts/Footer";
+import { BrowserRouter } from "react-router-dom";
+import { CartContextProvider } from "./contexts/CartContext";
+import { ErrorBoundary } from "react-error-boundary";
+import MainRoutes from "./routes/MainRoutes";
+import { AuthContextProvider } from "./contexts/AuthContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <AuthContextProvider>
+        <CartContextProvider>
+          <Header></Header>
+          <main className="container mt-5 pt-2">
+            <ErrorBoundary
+              fallback={
+                <div className="alert alert-danger">
+                  Something went wrong! Try again later!
+                </div>
+              }
+            >
+              <MainRoutes />
+            </ErrorBoundary>
+          </main>
+        </CartContextProvider>
+
+        <Footer />
+      </AuthContextProvider>
+    </BrowserRouter>
   );
 }
 
